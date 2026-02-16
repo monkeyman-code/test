@@ -3,37 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sparks - Coldplay</title>
+    <title>Song player</title>
     <style>
         body {
-            background-color: #f0f0f0;
+            /* Soft Pink Aesthetic */
+            background-color: #ffe4e1; 
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
-            font-family: sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .player-card {
+        .container {
             background: white;
             padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(255, 182, 193, 0.5);
             text-align: center;
+            width: 90%;
+            max-width: 400px;
         }
-        h2 { color: #333; margin-bottom: 20px; }
-        audio { width: 100%; }
+        h2 { color: #ff69b4; margin-bottom: 20px; }
+        
+        /* The Letter - Hidden by default */
+        #letter {
+            margin-top: 25px;
+            color: #d02090;
+            line-height: 1.6;
+            font-style: italic;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            padding: 15px;
+            border-top: 1px solid #ffe4e1;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="player-card">
-        <h2>Coldplay - Sparks</h2>
-        <audio controls>
+    <div class="container">
+        <h2>For My Favorite Person 🌸</h2>
+        
+        <audio id="myAudio" controls>
             <source src="my_song.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
+
+        <div id="letter">
+            "Before I met you, I hated the future. Now, I find myself looking forward to it because it seems a little brighter with you by my side. I am so glad that I chose you. Even if the multiverse exists, I’d still pick you, every single time."
+        </div>
     </div>
+
+    <script>
+        const audio = document.getElementById('myAudio');
+        const letter = document.getElementById('letter');
+
+        // This triggers the letter when the play button is clicked
+        audio.onplay = function() {
+            letter.style.opacity = "1";
+        };
+    </script>
 
 </body>
 </html>
